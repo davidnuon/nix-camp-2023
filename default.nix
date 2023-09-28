@@ -26,6 +26,7 @@ in
       cp $revealJS/dist/reset.css $out
       cp $revealJS/dist/reveal.css $out
       cp $revealJS/dist/reveal.js $out
+      cp -R $revealJS/dist/theme $out/theme
       cp $outputFile $out/index.html
     '';
   }
