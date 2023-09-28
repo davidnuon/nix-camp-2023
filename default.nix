@@ -10,7 +10,7 @@ in
   pkgs.stdenv.mkDerivation rec {
     inherit revealJS;
 
-    name = "inspect";
+    name = "nixcamp2023-Slides";
     unpackPhase = "true";
 
     buildPhase = '''';
