@@ -102,13 +102,14 @@ in
         stylesheets = [
           # "./reset.css"
           "./reveal.css"
+          "./theme/sky.css"
         ];
 
         footer = [
           (nix2html.script
             {
               children = [
-                (plainText ''                              
+                (plainText ''                        
                     Reveal.initialize({ plugins: [ RevealMarkdown ]});'')
               ];
             })
