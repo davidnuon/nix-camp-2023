@@ -8,7 +8,14 @@ in {
     ''
 
     ''
-      Hello world!
+      # I started using Nix ~4 months ago in May
+      - I wanted a better way to provision workstations vs. Ansible
+      - Nix dev-shells was my gateway drug
+    ''
+
+    ''
+      # I love ansible
+      ## But it's imperative nature
     ''
   ];
 }
