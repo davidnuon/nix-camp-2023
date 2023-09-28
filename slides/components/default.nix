@@ -6,6 +6,7 @@ in
     slidesContainer = slides:
       div {
         attributes = {
+          style = "font-size:40px;";
           class = "reveal";
         };
 
@@ -109,7 +110,7 @@ in
           (nix2html.script
             {
               children = [
-                (plainText ''                        
+                (plainText ''                                  
                     Reveal.initialize({ plugins: [ RevealMarkdown ]});'')
               ];
             })

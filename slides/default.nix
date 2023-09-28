@@ -11,7 +11,7 @@ in {
     ''
 
     ''
-      ### I was working with @djacu on a project when he said to me:
+      ### I was working with @djacu on a project when he said to me...
     ''
 
     ''
@@ -26,27 +26,31 @@ in {
 
     ''
       ## How I got in
-        - I started using Nix ~4 months ago in May
+        - I started using Nix ~4 months ago in May 2023
         - I wanted a better way to provision workstations vs. Ansible
-        - Nix dev-shells was my gateway drug
+        - Nix `dev-shell` was my gateway drug
     ''
 
     ''
+      ## Ansible has its place
       - I have immense repsect for ansible
       - But it has shown its flaws
         - State of hosts is hard to determine
         - Doing sophisicated computation involes britle text-based templating
         - Narrative of reusing playbooks and roles is dicey
+      - Nix's notion of "building a system" is what I wanted all along
     ''
 
     ''
-      - Writing the nixconfigs for multiple hosts was quick
-      - I've had experience with other functional languages, learning nix low friction
+      ## Nix was pretty pleasant
+        - Writing the nixconfigs for multiple hosts was quick
+        - I've had experience with other functional languages, learning nixlang was low friction
+        - Learning to _use_ Nix, the package manager took some time
     ''
     ''
       ## Multi-language support was a struggle
       - Khmer and Korean took a bit to figure out
-      - I didn't have Japanese (mozc) didn't work until 2 weeks ago
+      - I didn't have Japanese (mozc) working until 2 weeks ago
     ''
     ''
       ### But now I'm looking to swtich to NixOS on all my Linux hosts
@@ -63,15 +67,16 @@ in {
       - Written this morning at 6am
       - "Component-based" html writing
       - elmlang inspired
+      - If you're familiar with React, Preact, Flutter or Reason this should be familiar
     ''
 
     ''
       ## Inspiration
+      - It came to me in a dream
       - htmx
       - What if nix, but beyond config?
-      - it came to me in a dream
-        - before nixcamp
-      - I got tired of working on the SoCal NUG site
+        - Wanted to learn _nixlang_ without going into packaging things
+      - I got tired of working on the SoCal Nix User Group site
     ''
 
     ''
@@ -158,12 +163,39 @@ in {
     ''
 
     ''
+      Another example of render
+      ```
+      render :: Component -> String
+      render (div {
+        children = [
+          (text "this is a test")
+        ];
+      })`
+
+      # => <div>this is a test</div>
+      ```
+
+    ''
+
+    ''
+      ## This approach can be used for other document types
+
+      nix2pdf
+      nix2psd
+      nix2svg
+      nix2openscad
+      nix2guix
+    ''
+
+    ''
       ## Next steps
 
       - Burn this &#128293;
       - Add HTMX support
       - Add support to evaluate nix on backend
         - Take inspiration from React Server Components
+        - and the thing Matt demoed yesteday
+        - and WASM???
     ''
 
     ''
