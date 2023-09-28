@@ -1,88 +1,117 @@
-{nix2html}:
-with nix2html; rec {
-  plainText = str: (text {text = [str];});
+{nix2html}: let
+in
+  with nix2html; rec {
+    plainText = str: (text {text = [str];});
 
-  slidesContainer = slides:
-    div {
-      attributes = {
-        class = "reveal";
-      };
-
-      children = [
-        (div
-          {
-            attributes = {
-              class = "slides";
-            };
-
-            children = slides;
-          })
-      ];
-    };
-
-  slide = children:
-    section {
-      inherit children;
-    };
-
-  mdSlide = markdown:
-    section {
-      attributes = {
-        "data-markdown" = "";
-      };
-      children = [
-        (textarea
-          {
-            attributes = {
-              "data-template" = "";
-            };
-            children = [
-              (plainText markdown)
-            ];
-          })
-      ];
-    };
-
-  document = {
-    pageTitle ? "Nix Camp 2023",
-    children ? [],
-    scripts ? [],
-    stylesheets ? [],
-    footer ? [],
-  }: let
-    scriptTags = map (src:
-      script {
-        attributes = {inherit src;};
-      })
-    scripts;
-
-    styleTags = map (href:
-      link {
+    slidesContainer = slides:
+      div {
         attributes = {
-          rel = "stylesheet";
-          inherit href;
+          class = "reveal";
         };
-      })
-    stylesheets;
-  in
-    html {
-      children = [
-        (head {
-          children =
-            [
-              (title {
-                children = [
-                  (
-                    plainText pageTitle
-                  )
-                ];
-              })
-            ]
-            ++ styleTags;
+
+        children = [
+          (div
+            {
+              attributes = {
+                class = "slides";
+              };
+
+              children = slides;
+            })
+        ];
+      };
+
+    slide = children:
+      section {
+        inherit children;
+      };
+
+    mdSlide = markdown:
+      section {
+        attributes = {
+          "data-markdown" = "";
+        };
+        children = [
+          (textarea
+            {
+              attributes = {
+                "data-template" = "";
+              };
+              children = [
+                (plainText markdown)
+              ];
+            })
+        ];
+      };
+
+    document = {
+      pageTitle ? "Nix Camp 2023",
+      children ? [],
+      scripts ? [],
+      stylesheets ? [],
+      footer ? [],
+    }: let
+      scriptTags = map (src:
+        script {
+          attributes = {inherit src;};
         })
-        (body {
-          children = children ++ scriptTags ++ footer;
+      scripts;
+
+      styleTags = map (href:
+        link {
+          attributes = {
+            rel = "stylesheet";
+            inherit href;
+          };
         })
-      ];
-    };
-}
+      stylesheets;
+    in
+      html {
+        children = [
+          (head {
+            children =
+              [
+                (title {
+                  children = [
+                    (
+                      plainText pageTitle
+                    )
+                  ];
+                })
+              ]
+              ++ styleTags;
+          })
+          (body {
+            children = children ++ scriptTags ++ footer;
+          })
+        ];
+      };
+
+    slides = mdContent:
+      document {
+        pageTitle = "Nix Camp 2023";
+        children = [
+          (
+            slidesContainer (map mdSlide mdContent)
+          )
+        ];
+        scripts = [
+          "./reveal.js"
+          "./plugin/markdown/markdown.js"
+        ];
+        stylesheets = [
+          # "./reset.css"
+          "./reveal.css"
+        ];
+
+        footer = [
+          (nix2html.script
+            {
+              children = [
+                (plainText ''                              
+                    Reveal.initialize({ plugins: [ RevealMarkdown ]});'')
+              ];
+            })
+        ];
+      };
+  }
