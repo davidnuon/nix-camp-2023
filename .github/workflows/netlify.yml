@@ -12,10 +12,16 @@ jobs:
       with:
         nix_path: nixpkgs=channel:nixos-unstable
     - run: nix-build
-    - run: cp -rL result out
+    - run: cp -rL result build
     - run: ls
     - uses: wei/wget@v1
       with:
         args: -O slides.tar.gz "https://github.com/davidnuon/nix-camp-2023/archive/refs/heads/main.tar.gz"
-    - run: chmod -R 777 out
-    - run: cp slides.tar.gz out
+    - run: chmod -R 777 build
+    - run: cp slides.tar.gz build
+    - name: Deploy Netlify
+      uses: danakim/gh-action-deploy-netlify@master
+      with:
+        AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        DEPLOY_PROD: true
