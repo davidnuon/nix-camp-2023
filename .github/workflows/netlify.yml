@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  tests:
+  publish:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -20,9 +20,11 @@ jobs:
     - run: chmod -R 777 build
     - run: cp slides.tar.gz build
     - run: ls -la build
-    - name: Deploy Netlify
-      uses: danakim/gh-action-deploy-netlify@master
+
+    - name: Publish to Netlify
+      uses: netlify/actions/cli@master
       with:
-        AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        DEPLOY_PROD: true
+        args: deploy --dir=build 
+      env:
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
