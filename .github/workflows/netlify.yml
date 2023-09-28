@@ -19,6 +19,7 @@ jobs:
         args: -O slides.tar.gz "https://github.com/davidnuon/nix-camp-2023/archive/refs/heads/main.tar.gz"
     - run: chmod -R 777 build
     - run: cp slides.tar.gz build
+    - run: ls -la build
     - name: Deploy Netlify
       uses: danakim/gh-action-deploy-netlify@master
       with:
