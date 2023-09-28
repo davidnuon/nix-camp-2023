@@ -2,9 +2,14 @@
   nix2html = import (fetchTarball {
     url = "https://github.com/davidnuon/nix2html/archive/refs/tags/v0.0.2.tar.gz";
   }) {};
+  revealJS = fetchTarball {
+    url = "https://github.com/hakimel/reveal.js/archive/refs/tags/4.6.0.tar.gz";
+  };
   slides = import ./slides {inherit nix2html;};
 in
   pkgs.stdenv.mkDerivation rec {
+    inherit revealJS;
+
     name = "inspect";
     unpackPhase = "true";
 
@@ -17,6 +22,9 @@ in
 
     installPhase = ''
       mkdir $out
+      cp $revealJS/dist/reset.css $out
+      cp $revealJS/dist/reveal.css $out
+      cp $revealJS/dist/reveal.js $out
       cp $outputFile $out/index.html
     '';
   }

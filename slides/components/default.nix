@@ -5,22 +5,38 @@ with nix2html; rec {
   document = {
     pageTitle ? "Nix Camp 2023",
     children ? [],
-  }:
+    scripts ? [],
+    stylesheets ? [],
+  }: let
+    scriptTags = map (src:
+      script {
+        attributes = {inherit src;};
+      })
+    scripts;
+
+    styleTags = map (href:
+      style {
+        attributes = {inherit href;};
+      })
+    stylesheets;
+  in
     html {
       children = [
         (head {
           children = [
             (title {
-              children = [
-                (
-                  plainText pageTitle
-                )
-              ];
+              children =
+                [
+                  (
+                    plainText pageTitle
+                  )
+                ]
+                ++ styleTags;
             })
           ];
         })
         (body {
-          inherit children;
+          children = children ++ scriptTags;
         })
       ];
     };

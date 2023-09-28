@@ -17,5 +17,11 @@ in
         (pt "this is the second")
         (pt "this is the third")
       ];
+      scripts = [
+        "./reveal.js"
+      ];
+      stylesheets = [
+        "./reset.css"
+      ];
     };
   }
