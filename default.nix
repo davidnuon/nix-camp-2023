@@ -2,6 +2,7 @@
   nix2html = import (fetchTarball {
     url = "https://github.com/davidnuon/nix2html/archive/refs/tags/v0.0.2.tar.gz";
   }) {};
+  slides = import ./slides {inherit nix2html;};
 in
   pkgs.stdenv.mkDerivation rec {
     name = "inspect";
@@ -10,17 +11,7 @@ in
     buildPhase = '''';
 
     fileContents = with nix2html;
-      render (html {
-        children = [
-          (head
-            {})
-          (body
-            {
-              children = [
-              ];
-            })
-        ];
-      });
+      render slides.slides;
 
     outputFile = pkgs.writeText "index.html" fileContents;
 
