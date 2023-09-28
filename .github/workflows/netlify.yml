@@ -12,9 +12,10 @@ jobs:
       with:
         nix_path: nixpkgs=channel:nixos-unstable
     - run: nix-build
-    - run: cp -r result out
+    - run: cp -rL result out
     - run: ls
     - uses: wei/wget@v1
       with:
         args: -O slides.tar.gz "https://github.com/davidnuon/nix-camp-2023/archive/refs/heads/main.tar.gz"
+    - run: chmod -R 777 out
     - run: cp slides.tar.gz out
