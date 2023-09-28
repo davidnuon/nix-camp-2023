@@ -13,15 +13,30 @@ in
     slides = document {
       pageTitle = "Nix Camp 2023";
       children = [
-        (pt "this is the first")
-        (pt "this is the second")
-        (pt "this is the third")
+        (
+          slidesContainer [
+            (slide [(plainText "Hello")])
+            (slide [(plainText "Hello")])
+            (slide [(plainText "Hello")])
+            (slide [(plainText "Hello")])
+          ]
+        )
       ];
       scripts = [
         "./reveal.js"
       ];
       stylesheets = [
         "./reset.css"
+        "./reveal.css"
+      ];
+
+      footer = [
+        (nix2html.script
+          {
+            children = [
+              (plainText "Reveal.initialize();")
+            ];
+          })
       ];
     };
   }

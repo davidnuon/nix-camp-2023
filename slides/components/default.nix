@@ -2,11 +2,35 @@
 with nix2html; rec {
   plainText = str: (text {text = [str];});
 
+  slidesContainer = slides:
+    div {
+      attributes = {
+        class = "reveal";
+      };
+
+      children = [
+        (div
+          {
+            attributes = {
+              class = "slides";
+            };
+
+            children = slides;
+          })
+      ];
+    };
+
+  slide = children:
+    section {
+      inherit children;
+    };
+
   document = {
     pageTitle ? "Nix Camp 2023",
     children ? [],
     scripts ? [],
     stylesheets ? [],
+    footer ? [],
   }: let
     scriptTags = map (src:
       script {
@@ -15,28 +39,31 @@ with nix2html; rec {
     scripts;
 
     styleTags = map (href:
-      style {
-        attributes = {inherit href;};
+      link {
+        attributes = {
+          rel = "stylesheet";
+          inherit href;
+        };
       })
     stylesheets;
   in
     html {
       children = [
         (head {
-          children = [
-            (title {
-              children =
-                [
+          children =
+            [
+              (title {
+                children = [
                   (
                     plainText pageTitle
                   )
-                ]
-                ++ styleTags;
-            })
-          ];
+                ];
+              })
+            ]
+            ++ styleTags;
         })
         (body {
-          children = children ++ scriptTags;
+          children = children ++ scriptTags ++ footer;
         })
       ];
     };
