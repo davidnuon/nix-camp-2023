@@ -3,7 +3,7 @@
 in {
   slides = components.slides [
     ''
-      ## My journey through to Nix
+      ## My journey to Nix
 
       [github.com/davidnuon/nix2html](https://github.com/davidnuon/nix2html)
       [github.com/davidnuon/nix-camp-2023](https://github.com/davidnuon/nix-camp-2023)
@@ -11,7 +11,7 @@ in {
     ''
 
     ''
-      ### I was working with @djacu on a project when he said to me...
+      ### I was working with Dan on a project when he said to me...
     ''
 
     ''
@@ -36,7 +36,7 @@ in {
       - I have immense repsect for ansible
       - But it has shown its flaws
         - State of hosts is hard to determine
-        - Doing sophisicated computation involes britle text-based templating
+        - Doing sophisticated computation involves brittle text-based templating
         - Narrative of reusing playbooks and roles is dicey
       - Nix's notion of "building a system" is what I wanted all along
     ''
@@ -73,7 +73,7 @@ in {
     ''
       ## Inspiration
       - It came to me in a dream
-      - htmx
+      - htmx, my favorite js framework twitter account
       - What if nix, but beyond config?
         - Wanted to learn _nixlang_ without going into packaging things
       - I got tired of working on the SoCal Nix User Group site
@@ -84,7 +84,7 @@ in {
       - Each component returns an `attrset` with the form
          ```
           {
-            attributes = {}; children = []; name = "TagName"
+            attributes = {}; children = []; name = "tag-name";
           }
           ```
       - a `render` function turns `Component -> String`
