@@ -22,6 +22,7 @@ in
 
     installPhase = ''
       mkdir $out
+      cp -r $revealJS/plugin $out
       cp $revealJS/dist/reset.css $out
       cp $revealJS/dist/reveal.css $out
       cp $revealJS/dist/reveal.js $out

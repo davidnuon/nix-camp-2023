@@ -25,6 +25,24 @@ with nix2html; rec {
       inherit children;
     };
 
+  mdSlide = markdown:
+    section {
+      attributes = {
+        "data-markdown" = "";
+      };
+      children = [
+        (textarea
+          {
+            attributes = {
+              "data-template" = "";
+            };
+            children = [
+              (plainText markdown)
+            ];
+          })
+      ];
+    };
+
   document = {
     pageTitle ? "Nix Camp 2023",
     children ? [],

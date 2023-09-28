@@ -14,19 +14,23 @@ in
       pageTitle = "Nix Camp 2023";
       children = [
         (
-          slidesContainer [
-            (slide [(plainText "Hello")])
-            (slide [(plainText "Hello")])
-            (slide [(plainText "Hello")])
-            (slide [(plainText "Hello")])
-          ]
+          slidesContainer (map mdSlide [
+            ''
+              # Nix.Camp 2023
+            ''
+
+            ''
+              Hello world!
+            ''
+          ])
         )
       ];
       scripts = [
         "./reveal.js"
+        "./plugin/markdown/markdown.js"
       ];
       stylesheets = [
-        "./reset.css"
+        # "./reset.css"
         "./reveal.css"
       ];
 
@@ -34,7 +38,8 @@ in
         (nix2html.script
           {
             children = [
-              (plainText "Reveal.initialize();")
+              (plainText ''                      
+                  Reveal.initialize({ plugins: [ RevealMarkdown ]});'')
             ];
           })
       ];
