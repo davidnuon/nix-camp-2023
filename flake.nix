@@ -27,26 +27,24 @@
     inherit fileContents;
     inherit revealJS;
 
-    defaultPackage.x86_64-linux =
-      # Notice the reference to nixpkgs here.
-      with import nixpkgs {system = "x86_64-linux";};
-        stdenv.mkDerivation {
-          inherit revealJS fileContents;
-          outputFile = writeText "index.html" self.fileContents;
+    defaultPackage.x86_64-linux = with import nixpkgs {system = "x86_64-linux";};
+      stdenv.mkDerivation {
+        inherit revealJS fileContents;
+        outputFile = writeText "index.html" self.fileContents;
 
-          name = "nix-camp-slides";
-          src = self;
+        name = "nix-camp-slides";
+        src = self;
 
-          buildPhase = '''';
-          installPhase = ''
-            mkdir $out
-            cp -r $revealJS/plugin $out
-            cp $revealJS/dist/reset.css $out
-            cp $revealJS/dist/reveal.css $out
-            cp $revealJS/dist/reveal.js $out
-            cp -R $revealJS/dist/theme $out/theme
-            cp $outputFile $out/index.html
-          '';
-        };
+        buildPhase = '''';
+        installPhase = ''
+          mkdir $out
+          cp -r $revealJS/plugin $out
+          cp $revealJS/dist/reset.css $out
+          cp $revealJS/dist/reveal.css $out
+          cp $revealJS/dist/reveal.js $out
+          cp -R $revealJS/dist/theme $out/theme
+          cp $outputFile $out/index.html
+        '';
+      };
   };
 }
