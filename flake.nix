@@ -7,6 +7,8 @@
     nix2html-src.flake = false;
     revealJS-src.url = "github:hakimel/reveal.js";
     revealJS-src.flake = false;
+    flake-compat.url = "github:edolstra/flake-compat";
+    flake-compat.flake = false;
   };
 
   outputs = {
@@ -14,6 +16,7 @@
     nixpkgs,
     nix2html-src,
     revealJS-src,
+    flake-compat,
   }: let
     nix2html = import nix2html-src {};
     revealJS = revealJS-src;
