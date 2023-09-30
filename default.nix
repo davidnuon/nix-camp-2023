@@ -1,6 +1,6 @@
 {pkgs ? import <nixpkgs> {}}: let
   nix2html = import (fetchTarball {
-    url = "https://github.com/davidnuon/nix2html/archive/refs/tags/v0.0.2.tar.gz";
+    url = "https://github.com/davidnuon/nix2html/archive/refs/tags/v0.0.3.tar.gz";
   }) {};
   revealJS = fetchTarball {
     url = "https://github.com/hakimel/reveal.js/archive/refs/tags/4.6.0.tar.gz";

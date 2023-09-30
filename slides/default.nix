@@ -64,7 +64,7 @@ in {
     ''
     ''
       ## Introducing `nix2html`
-      - Written this morning at 6am
+      - Written just to make these slides
       - "Component-based" html writing
       - elmlang inspired
       - If you're familiar with React, Preact, Flutter or Reason this should be familiar
@@ -73,7 +73,7 @@ in {
     ''
       ## Inspiration
       - It came to me in a dream
-      - htmx, my favorite js framework twitter account
+      - @html_org, my favorite twitter account
       - What if nix, but beyond config?
         - Wanted to learn _nixlang_ without going into packaging things
       - I got tired of working on the SoCal Nix User Group site

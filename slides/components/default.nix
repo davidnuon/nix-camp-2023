@@ -1,8 +1,6 @@
 {nix2html}: let
 in
   with nix2html; rec {
-    plainText = str: (text {text = [str];});
-
     slidesContainer = slides:
       div {
         attributes = {
@@ -39,7 +37,7 @@ in
                 "data-template" = "";
               };
               children = [
-                (plainText markdown)
+                markdown
               ];
             })
         ];
@@ -74,9 +72,7 @@ in
               [
                 (title {
                   children = [
-                    (
-                      plainText pageTitle
-                    )
+                    pageTitle
                   ];
                 })
               ]
@@ -110,8 +106,7 @@ in
           (nix2html.script
             {
               children = [
-                (plainText ''                                  
-                    Reveal.initialize({ plugins: [ RevealMarkdown ]});'')
+                ''Reveal.initialize({ plugins: [ RevealMarkdown ]});''
               ];
             })
         ];
