@@ -1,0 +1,79 @@
+{
+  "nodes": {
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673956053,
+        "narHash": "sha256-4gtG9iQuiKITOjNQQeQIpoIB6b16fm+504Ch3sNKLd8=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "35bb57c0c8d8b62bbfd284272c928ceb64ddbde9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "nix2html-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1696063804,
+        "narHash": "sha256-KgJ3l4kr9a8OEwqLtAUmKaIVVieHVAn3tQt61kRM9A8=",
+        "owner": "davidnuon",
+        "repo": "nix2html",
+        "rev": "9ed7967e2aa157c11c455af968126df8a7071ec1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "davidnuon",
+        "ref": "v0.0.3",
+        "repo": "nix2html",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1659914493,
+        "narHash": "sha256-lkA5X3VNMKirvA+SUzvEhfA7XquWLci+CGi505YFAIs=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "022caabb5f2265ad4006c1fa5b1ebe69fb0c3faf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-21.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "revealJS-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1695738029,
+        "narHash": "sha256-Z9c9Q41jMkj/DyXOiZYyIa7Gmn8VB8yauTyWrSsT+ps=",
+        "owner": "hakimel",
+        "repo": "reveal.js",
+        "rev": "88fbfc5751ad01e3f6adee5819eabeb9e73c3757",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hakimel",
+        "repo": "reveal.js",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nix2html-src": "nix2html-src",
+        "nixpkgs": "nixpkgs",
+        "revealJS-src": "revealJS-src"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
